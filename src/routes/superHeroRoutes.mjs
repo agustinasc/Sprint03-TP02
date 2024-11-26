@@ -10,6 +10,10 @@ import {
     eliminarSuperheroeController,
     eliminarPorNombreSuperheroeController
 } from '../controllers/superheroesController.mjs';
+import { Router } from 'express';
+import { registerValidationRules } from '../middlewares/validationRules.js';
+import {validationResult} from 'express-validator'
+
 
 
 const router = express.Router();
@@ -28,6 +32,19 @@ router.delete('/heroes/eliminar/:id', eliminarSuperheroeController)
 router.delete('/heroes/eliminar/nombre/:nombre', eliminarPorNombreSuperheroeController)
 
 
+/////TP 02
+
+router.post('/heroes/nombreSuperheroe/:nombreSuperheroe', 
+    registerValidationRules(), 
+    (req, res, next) => {
+        const errors = validationResult(req); 
+            if(!errors.isEmpty()){
+            return res.status(400).json({ errors: errors.array()})
+            }
+    next()},
+    (req, res) => {      
+        res.send('Superhéroe validado correctamente')
+    })
 
 
 export default router;

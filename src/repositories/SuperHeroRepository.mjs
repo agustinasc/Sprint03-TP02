@@ -84,7 +84,7 @@ class SuperHeroRepository extends IRepository {
 
     async eliminarSuperHeroPorNombre(nombre){
         try {
-            const superheroeEliminadoPornombre = await SuperHero.findOneAndDelete({nombreSuperheroe: nombre}) //Mongoogse con su metodo "findOneAndDelete" encuentra al superheroe y lo elimina
+            const superheroeEliminadoPornombre = await SuperHero.findOneAndDelete({nombreSuperHeroe: nombre}) //Mongoogse con su metodo "findOneAndDelete" encuentra al superheroe y lo elimina
             return superheroeEliminadoPornombre
 
         } catch (error) {

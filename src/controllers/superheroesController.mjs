@@ -153,13 +153,13 @@ export async function eliminarPorNombreSuperheroeController(req,res){
 
         try{
             const { nombre } = req.params; //Busca el nombre del SUperheroe a eliminar
-            //console.log(nombre);
+            console.log(nombre);
             
             const superheroeEliminadoPornombre = await eliminarSuperheroePornombre(nombre) //Llama al servicio y espera
             console.log(superheroeEliminadoPornombre);
 
             if (!superheroeEliminadoPornombre) {
-                return res.status(404).send({ mensaje: 'Superhéroe no encontrado' });
+                return res.status(404).send({ mensaje: 'Superhéroe no encontrado (controller)' });
             }
             return res.status(200).send({ mensaje: 'Nombre de superhéroe eliminado', data: superheroeEliminadoPornombre});
 

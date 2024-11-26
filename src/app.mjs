@@ -9,6 +9,7 @@ const PORT = process.env.PORT || 3000;
 //Middleware para JSON
 app.use(express.json());
 
+
 //Conexion a MongoDB
 connectDB();
 
@@ -17,7 +18,7 @@ app.use('/api', SuperHeroRoutes);
 
 //Manejo de errores para rutas no encontradas
 app.use((req, res) => {
-    res.status(404).send({ mensaje: "Ruta no encontrada lala"});
+    res.status(404).send({ mensaje: "Ruta no encontrada app.mjs"});
 });
 
 //Iniciar el servidor
